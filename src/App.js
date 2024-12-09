@@ -12,7 +12,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 function App() {
   const [mode, setMode] = useState("light");
   const [alert, setAlert] = useState(null);
-
+  
   const showAlert = (message, type) => {
     setAlert({
       msg: message,
@@ -47,12 +47,11 @@ function App() {
   return (
     <>
       <Router>
-        <Navbar Title="Textmonial" mode={mode} toggleMode={toggleMode} />
+        <Navbar Title="TestEase" mode={mode} toggleMode={toggleMode}/>
         <Alert alert={alert} />
-
         <Routes>
+          <Route path="/" element={<Welcome mode={mode} />} />
           <Route path="/Home" element={<Home mode={mode} />} />
-          <Route path="/Welcome" element={<Welcome mode={mode} />} />
           <Route path="/about" element={<About mode={mode} />} />
           <Route
             path="/Textform"

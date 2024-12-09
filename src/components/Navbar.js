@@ -1,15 +1,22 @@
-import React from "react";
+import React, {useState} from "react";
 // import PropTypes from 'prop-types'
 import { Link } from "react-router-dom";
-// import Welcome from "./Welcome";
+
+
 
 export default function Navbar(props) {
+  const [searchQuery, setSearchQuery] = useState("");
+
+  const handleSearchChange = (event) => {
+    setSearchQuery(event.target.value);
+  };
   return (
+    <>
     <nav
-      className={`navbar navbar-expand-lg  navbar-${props.mode} bg-${props.mode}`}
+      className={`navbar navbar-expand-lg sticky-top navbar-${props.mode} bg-${props.mode}`}
     >
       <div className="container-fluid">
-        <Link className="navbar-brand" to="/Welcome">
+        <Link className="navbar-brand" to="/">
           {props.Title}
         </Link>
         <button
@@ -55,54 +62,36 @@ export default function Navbar(props) {
                 aria-current="page"
                 to="/Textform"
               >
-                Textform
+                TextTransform
               </Link>
             </li>
           </ul>
-          <form className="d-flex" role="search">
-            <input
-              className="form-control me-2"
-              type="search"
-              placeholder="Search"
-              aria-label="Search"
-            />
-            <button className="btn btn-outline-success" type="submit">
-              Search
-            </button>
-          </form>
-          {/* toggle mode extra colors */}
-          {/* <div className="d-flex">
-            <div
-              className="bg-primary rounded mx-2"
-              onClick={() => {
-                props.toggleMode("primary");
-              }}
-              style={{ cursor: "pointer", height: "30px", width: "30px" }}
-            ></div>
-            <div
-              className="bg-danger rounded mx-2"
-              onClick={() => {
-                props.toggleMode("danger");
-              }}
-              style={{ cursor: "pointer", height: "30px", width: "30px" }}
-            ></div>
-            <div
-              className="bg-success rounded mx-2"
-              onClick={() => {
-                props.toggleMode("success");
-              }}
-              style={{ cursor: "pointer", height: "30px", width: "30px" }}
-            ></div>
-            <div
-              className="bg-warning rounded mx-2"
-              onClick={() => {
-                props.toggleMode("warning");
-              }}
-              style={{ cursor: "pointer", height: "30px", width: "30px" }}
-            ></div>
-          </div> */}
+          <form
+        action="https://www.google.com/search"
+        method="GET"
+        target="_blank"
+        className="d-flex"
+      >
+        {/* Input field for the search query */}
+        <input
+          type="text"
+          name="q" // This is the parameter Google uses for its search
+          value={searchQuery}
+          onChange={handleSearchChange}
+          className="form-control me-2"
+          placeholder="Search Google"
+        />
+        {/* Submit button */}
+        <button
+          type="submit"
+          className="btn btn-primary"
+          disabled={!searchQuery.trim()} // Disable if the query is empty
+        >
+          Search
+        </button>
+      </form>
           <div
-            className={`form-check form-switch ms-4 text-${
+            className={`form-check form-switch mx-2 text-${
               props.mode === "light" ? "dark" : "light"
             }`}
           >
@@ -119,12 +108,26 @@ export default function Navbar(props) {
               className="form-check-label"
               htmlFor="flexSwitchCheckDefault"
             >
-              Enable DarkMode
+              DarkMode
             </label>
           </div>
         </div>
       </div>
     </nav>
+    <div className=" my-2">
+        <marquee
+          behavior="scroll"
+          bgcolor="grey"
+          height="30px"
+          direction="left"
+           style={{color: "white", width: "100%", margin: "0 auto"}}
+        >
+          Change TextEase is a handy web application that enables you to change
+          the text case of any given text. Simply copy and paste the text into
+          the text area below and click the required text case.
+        </marquee>
+      </div>
+    </>
   );
 }
 // Navbar.propTypes={

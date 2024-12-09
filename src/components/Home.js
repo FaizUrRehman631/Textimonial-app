@@ -2,6 +2,7 @@ import React from "react";
 
 export default function Home(props) {
   return (
+    <>
     <div
       className="container mt-3 "
       style={{ color: props.mode === "dark" ? "white" : "black" }}
@@ -13,7 +14,7 @@ export default function Home(props) {
           color: props.mode === "dark" ? "green" : "white",
         }}
       >
-        <h2>Learn About Textutils</h2>
+        <h2>Learn About TextEase</h2>
       </div>
       <h3> What does the Text Analyzer do?</h3>
       <p>
@@ -41,11 +42,34 @@ export default function Home(props) {
         focuses on complexity of language.
       </p>
       <h3>What is word complexity?</h3>
-      <p>
+      <p className="mb-5">
         This is the average position of the words in the list of 10,000 most
         frequent words in English. Hence, the lower the score, the easier the
         text and the higher the score, the more difficult.
       </p>
     </div>
+    <footer className="bg-dark text-white text-center py-3 mt-auto">
+      <p>
+        &copy; {new Date().getFullYear()} Shadow Walker. All Rights Reserved.
+      </p>
+      <p>
+        <a
+          href="#"
+          className="text-white text-decoration-none"
+          style={{ fontWeight: "bold" }}
+        >
+          Privacy Policy
+        </a>{" "}
+        |{" "}
+        <a
+          href="#"
+          className="text-white text-decoration-none"
+          style={{ fontWeight: "bold" }}
+        >
+          Terms of Service
+        </a>
+      </p>
+    </footer>
+    </>
   );
 }

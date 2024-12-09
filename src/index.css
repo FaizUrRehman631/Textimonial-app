@@ -14,3 +14,42 @@ code {
 .accordion-button::after {
   filter: invert(1);
 }
+textarea::placeholder {
+  color: grey;
+}
+.highlight {
+  background-color: yellow;
+  font-weight: bold;
+  padding: 0 2px;
+  border-radius: 2px;
+}
+
+
+
+.nav-Link {
+  position: relative;
+  display: inline-block;
+  transition: color 0.3s ease;
+}
+
+.nav-Link:hover {
+  color: #007bff; /* Change to your preferred color */
+  text-decoration: underline;
+}
+
+.nav-Link::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #007bff; /* Add an underline effect */
+  transition: width 0.3s ease;
+}
+
+.nav-Link:hover::after {
+  width: 100%;
+}
+
+
